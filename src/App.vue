@@ -1,28 +1,39 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <section class="hero is-info">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title has-text-centered">Punk Beers</h1>
+          <h2 class="subtitle has-text-centered">Site for Beer Lovers</h2>
+        </div>
+      </div>
+    </section>
+
+    <SearchBar @onSearchItem="handleSearchItem"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SearchBar from "./components/SearchBar";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    SearchBar
+  },
+  data() {
+    return {
+      searchQuery: "",
+      beerList: []
+    };
+  },
+  methods: {
+    handleSearchItem(query) {
+      this.searchQuery = query;
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
