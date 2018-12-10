@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import axios from "axios/dist/axios.min.js";
 import SearchBar from "./components/SearchBar";
 
 export default {
@@ -28,9 +29,18 @@ export default {
     };
   },
   methods: {
+    getBeerData() {
+      axios
+        .get("https://api.punkapi.com/v2/beers")
+        .then(response => (this.beerList = response.data))
+        .catch(error => alert(error.message));
+    },
     handleSearchItem(query) {
       this.searchQuery = query;
     }
+  },
+  created() {
+    this.getBeerData();
   }
 };
 </script>
