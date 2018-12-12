@@ -10,17 +10,20 @@
     </section>
 
     <SearchBar @onSearchItem="handleSearchItem"/>
+    <BeerList :list="beerList"/>
   </div>
 </template>
 
 <script>
 import axios from "axios/dist/axios.min.js";
 import SearchBar from "./components/SearchBar";
+import BeerList from "./components/BeerList";
 
 export default {
   name: "app",
   components: {
-    SearchBar
+    SearchBar,
+    BeerList
   },
   data() {
     return {
