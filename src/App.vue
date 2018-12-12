@@ -10,7 +10,7 @@
     </section>
 
     <SearchBar @onSearchItem="handleSearchItem"/>
-    <BeerList :list="beerList"/>
+    <BeerList :list="filteredBeerList"/>
   </div>
 </template>
 
@@ -34,7 +34,7 @@ export default {
   methods: {
     getBeerData() {
       axios
-        .get("https://api.punkapi.com/v2/beers")
+        .get("https://api.punkapi.com/v2/beers?per_page=30")
         .then(response => (this.beerList = response.data))
         .catch(error => alert(error.message));
     },
@@ -44,6 +44,14 @@ export default {
   },
   created() {
     this.getBeerData();
+  },
+  computed: {
+    filteredBeerList() {
+      return this.beerList.filter(
+        beer =>
+          beer.name.toLowerCase().indexOf(this.searchQuery.toLowerCase()) > -1
+      );
+    }
   }
 };
 </script>
