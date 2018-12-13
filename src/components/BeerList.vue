@@ -1,8 +1,12 @@
 <template>
-  <section class="section" v-if="list.length">
+  <section class="section" >
     <div class="container">
-      <div class="columns">
+      <div class="columns" v-if="list.length">
         <BeerCard v-for="item in list" :key="item.id" :item="item"/>
+      </div>
+
+      <div class="notification is-danger has-text-centered" v-else>
+        List has not been successfully loaded.
       </div>
     </div>
   </section>
