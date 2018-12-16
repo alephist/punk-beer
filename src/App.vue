@@ -9,21 +9,18 @@
       </div>
     </section>
 
-    <SearchBar @onSearchItem="handleSearchItem"/>
-    <BeerList :list="filteredBeerList"/>
+    <Home @onSearchItem="handleSearchItem" :list="filteredBeerList"/>
   </div>
 </template>
 
 <script>
-import axios from "axios/dist/axios.min.js";
-import SearchBar from "./components/SearchBar";
-import BeerList from "./components/BeerList";
+import axios from "axios";
+import Home from "./components/Home";
 
 export default {
   name: "app",
   components: {
-    SearchBar,
-    BeerList
+    Home
   },
   data() {
     return {
