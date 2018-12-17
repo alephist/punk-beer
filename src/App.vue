@@ -3,25 +3,21 @@
     <section class="hero is-info">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title has-text-centered">Punk Beers</h1>
+          <router-link tag="h1" :to="{ name: 'Home' }" class="title has-text-centered">Punk Beers</router-link>
           <h2 class="subtitle has-text-centered">Site for Beer Lovers</h2>
         </div>
       </div>
     </section>
 
-    <Home @onSearchItem="handleSearchItem" :list="filteredBeerList"/>
+    <router-view @onSearchItem="handleSearchItem" :list="filteredBeerList"></router-view>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import Home from "./components/Home";
 
 export default {
   name: "app",
-  components: {
-    Home
-  },
   data() {
     return {
       searchQuery: "",
@@ -54,4 +50,7 @@ export default {
 </script>
 
 <style>
+h1 {
+  cursor: pointer;
+}
 </style>

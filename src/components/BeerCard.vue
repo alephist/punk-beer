@@ -10,6 +10,13 @@
       <div class="card-content">
         <p class="has-text-centered has-text-weight-semibold">{{ item.name }}</p>
       </div>
+
+      <footer class="card-footer">
+        <router-link
+          :to="{ name: 'BeerDetail', params: { id: item.id } }"
+          class="card-footer-item"
+        >Details</router-link>
+      </footer>
     </div>
   </div>
 </template>
@@ -23,7 +30,7 @@ export default {
 
 <style scoped>
 .card-image {
-  padding-top: 15px;
+  padding-top: 0.9375rem;
 }
 
 .image img {
