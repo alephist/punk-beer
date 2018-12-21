@@ -44,26 +44,30 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   name: "BeerDetail",
   data() {
     return {
       productId: this.$route.params.id,
+      products: this.$store.getters.filteredBeerList,
       product: null
     };
   },
   methods: {
-    getBeer() {
-      axios
-        .get(`https://api.punkapi.com/v2/beers/${this.productId}`)
-        .then(response => (this.product = response.data[0]))
-        .catch(error => alert(error.message));
+    getBeer(id) {
+      let match = null;
+
+      this.products.forEach(beer => {
+        if (beer.id === id) {
+          match = beer;
+        }
+      });
+
+      return match;
     }
   },
   created() {
-    this.getBeer();
+    this.product = this.getBeer(this.productId);
   }
 };
 </script>
