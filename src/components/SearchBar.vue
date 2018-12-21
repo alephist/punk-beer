@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     searchItem() {
-      this.$emit("onSearchItem", this.searchQuery);
+      this.$store.commit("handleSearchItem", this.searchQuery);
     }
   }
 };

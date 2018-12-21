@@ -1,7 +1,7 @@
 <template>
   <div>
-    <SearchBar @onSearchItem="searchItem"/>
-    <BeerList :list="list"/>
+    <SearchBar/>
+    <BeerList/>
   </div>
 </template>
 
@@ -11,17 +11,9 @@ import BeerList from "./BeerList";
 
 export default {
   name: "Home",
-  props: {
-    list: Array
-  },
   components: {
     SearchBar,
     BeerList
-  },
-  methods: {
-    searchItem(query) {
-      this.$emit("onSearchItem", query);
-    }
   }
 };
 </script>
