@@ -55,15 +55,7 @@ export default {
   },
   methods: {
     getBeer(id) {
-      let match = null;
-
-      this.products.forEach(beer => {
-        if (beer.id === id) {
-          match = beer;
-        }
-      });
-
-      return match;
+      return this.products.find(beer => beer.id === id)
     }
   },
   created() {
